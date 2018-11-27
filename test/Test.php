@@ -20,6 +20,9 @@ $testTextIP = "Адреса для внутреннего использован
 Полный список описания сетей для IPv4 представлен в RFC 6890.";
 
 class getPhoneFromTextTest extends TestCase
+
+        //Get phone numbers from text according to the pattern
+
     /*Phone number formats:
     1.first (050)66-57-777
     2.second (050)66 57 777
@@ -105,7 +108,27 @@ class getPhoneFromTextTest extends TestCase
     }
 }
 
+class getFormatedPhoneNumTest extends TestCase{
+
+        // Bringing all phone numbers to the one format
+
+    public function testFormatedNum(){
+        $numbersArr=getFormatedPhoneNum(getPhoneFromText($GLOBALS["testText"]));
+        $numbersArrForCheck = ["+380506657777","+380506657777","+380441221221",
+            "+380441221221","+380441221221","+380441221221","+380676411212",
+            "+380506515235", "+380235623231"];
+        for ($i=0;$i<count($numbersArr);$i++){
+            if (trim($numbersArr[$i])===$numbersArrForCheck[$i]){
+                $this->assertSame($numbersArrForCheck[$i],trim($numbersArr[$i]));
+            }
+        }
+    }
+
+}
+
 class getIpFromTextTest extends TestCase{
+
+        //Get IP from text
 
     public function testSimpleIp(){
         $testNum = "169.254.1.0";
