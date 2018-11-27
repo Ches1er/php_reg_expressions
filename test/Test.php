@@ -118,9 +118,7 @@ class getFormatedPhoneNumTest extends TestCase{
             "+380441221221","+380441221221","+380441221221","+380676411212",
             "+380506515235", "+380235623231"];
         for ($i=0;$i<count($numbersArr);$i++){
-            if (trim($numbersArr[$i])===$numbersArrForCheck[$i]){
-                $this->assertSame($numbersArrForCheck[$i],trim($numbersArr[$i]));
-            }
+                $this->assertSame($numbersArrForCheck[$i],$numbersArr[$i]);
         }
     }
 
